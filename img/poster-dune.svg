@@ -1,0 +1,23 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 420">
+  <defs>
+    <linearGradient id="bg5" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#e8c080;stop-opacity:1"/>
+      <stop offset="50%" style="stop-color:#d4a574;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#5a3a1a;stop-opacity:1"/>
+    </linearGradient>
+  </defs>
+  <rect width="280" height="420" fill="url(#bg5)"/>
+  <!-- Sand dunes -->
+  <ellipse cx="140" cy="220" rx="180" ry="50" fill="#c4955a"/>
+  <ellipse cx="80" cy="200" rx="120" ry="30" fill="#b88a4a"/>
+  <ellipse cx="220" cy="190" rx="100" ry="25" fill="#a07840"/>
+  <!-- Moons -->
+  <circle cx="200" cy="80" r="20" fill="#ffffff" opacity="0.6"/>
+  <circle cx="230" cy="100" r="10" fill="#ffffff" opacity="0.4"/>
+  <text x="140" y="290" font-family="Georgia, serif" font-size="22" fill="#1a1a2e" text-anchor="middle" font-weight="bold">DUNE</text>
+  <text x="140" y="312" font-family="Georgia, serif" font-size="16" fill="#1a1a2e" text-anchor="middle">PART TWO</text>
+  <text x="140" y="338" font-family="Arial, sans-serif" font-size="13" fill="#3a2a1a" text-anchor="middle">Denis Villeneuve</text>
+  <text x="140" y="360" font-family="Arial, sans-serif" font-size="12" fill="#5a3a1a" text-anchor="middle">Sci-Fi | 2024 | 166 min</text>
+  <rect x="105" y="372" width="70" height="28" rx="4" fill="#f5c518"/>
+  <text x="140" y="391" font-family="Arial, sans-serif" font-size="14" fill="#1a1a2e" text-anchor="middle" font-weight="bold">8.3</text>
+</svg>

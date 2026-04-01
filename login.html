@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Democratische Bioscoop - Inloggen</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="img/popcorn.svg" alt="Popvote logo" class="logo-img">
+                <span class="logo-name">Popvote</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="stemmen.html">Stemmen</a></li>
+                <li><a href="reserveren.html">Reserveren</a></li>
+                <li id="auth-nav"></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <div class="container">
+            <section>
+                <div class="auth-container">
+
+                    <!-- Tab knoppen -->
+                    <div class="auth-tabs">
+                        <button class="auth-tab active" id="tabLoginBtn" onclick="showTab('login')">Inloggen</button>
+                        <button class="auth-tab" id="tabRegisterBtn" onclick="showTab('register')">Registreren</button>
+                    </div>
+
+                    <!-- Inloggen formulier -->
+                    <div id="loginPanel" class="auth-panel">
+                        <h2>Inloggen</h2>
+                        <p class="auth-subtitle">Log in om te kunnen stemmen op jouw favoriete film.</p>
+
+                        <div id="loginError" class="alert alert-error" style="display:none;"></div>
+
+                        <form id="loginForm" onsubmit="handleLogin(event)">
+                            <div class="form-group">
+                                <label for="loginEmail">E-mailadres</label>
+                                <input type="email" id="loginEmail" required placeholder="je@email.com">
+                            </div>
+                            <div class="form-group">
+                                <label for="loginPassword">Wachtwoord</label>
+                                <input type="password" id="loginPassword" required placeholder="Jouw wachtwoord">
+                            </div>
+                            <button type="submit" class="btn btn-large" style="width: 100%;">Inloggen</button>
+                        </form>
+
+                        <p class="auth-switch">
+                            Nog geen account?
+                            <a href="#" onclick="showTab('register'); return false;">Registreer hier</a>
+                        </p>
+                    </div>
+
+                    <!-- Registreren formulier -->
+                    <div id="registerPanel" class="auth-panel" style="display:none;">
+                        <h2>Account aanmaken</h2>
+                        <p class="auth-subtitle">Maak een gratis account aan om te kunnen stemmen.</p>
+
+                        <div id="registerError" class="alert alert-error" style="display:none;"></div>
+                        <div id="registerSuccess" class="alert alert-success" style="display:none;"></div>
+
+                        <form id="registerForm" onsubmit="handleRegister(event)">
+                            <div class="form-group">
+                                <label for="regUsername">Gebruikersnaam</label>
+                                <input type="text" id="regUsername" required placeholder="Jouw naam" minlength="2">
+                            </div>
+                            <div class="form-group">
+                                <label for="regEmail">E-mailadres</label>
+                                <input type="email" id="regEmail" required placeholder="je@email.com">
+                            </div>
+                            <div class="form-group">
+                                <label for="regPassword">Wachtwoord</label>
+                                <input type="password" id="regPassword" required placeholder="Minimaal 4 tekens" minlength="4">
+                            </div>
+                            <div class="form-group">
+                                <label for="regPassword2">Wachtwoord herhalen</label>
+                                <input type="password" id="regPassword2" required placeholder="Herhaal wachtwoord">
+                            </div>
+                            <button type="submit" class="btn btn-large" style="width: 100%;">Account aanmaken</button>
+                        </form>
+
+                        <p class="auth-switch">
+                            Al een account?
+                            <a href="#" onclick="showTab('login'); return false;">Log hier in</a>
+                        </p>
+                    </div>
+
+                </div>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Democratische Bioscoop. Alle rechten voorbehouden.</p>
+        </div>
+    </footer>
+
+    <script src="js/auth.js"></script>
+    <script>
+        // Redirect als al ingelogd
+        if (auth.isLoggedIn()) {
+            window.location.href = 'stemmen.html';
+        }
+
+        function showTab(tab) {
+            const loginPanel    = document.getElementById('loginPanel');
+            const registerPanel = document.getElementById('registerPanel');
+            const tabLoginBtn   = document.getElementById('tabLoginBtn');
+            const tabRegisterBtn = document.getElementById('tabRegisterBtn');
+
+            if (tab === 'login') {
+                loginPanel.style.display    = '';
+                registerPanel.style.display = 'none';
+                tabLoginBtn.classList.add('active');
+                tabRegisterBtn.classList.remove('active');
+            } else {
+                loginPanel.style.display    = 'none';
+                registerPanel.style.display = '';
+                tabLoginBtn.classList.remove('active');
+                tabRegisterBtn.classList.add('active');
+            }
+        }
+
+        function handleLogin(e) {
+            e.preventDefault();
+            const email    = document.getElementById('loginEmail').value;
+            const password = document.getElementById('loginPassword').value;
+            const errorEl  = document.getElementById('loginError');
+
+            const result = auth.login(email, password);
+            if (result.error) {
+                errorEl.textContent = result.error;
+                errorEl.style.display = '';
+            } else {
+                errorEl.style.display = 'none';
+                // Terugsturen naar stemmen (of vorige pagina)
+                const redirect = new URLSearchParams(window.location.search).get('redirect') || 'stemmen.html';
+                window.location.href = redirect;
+            }
+        }
+
+        function handleRegister(e) {
+            e.preventDefault();
+            const username  = document.getElementById('regUsername').value;
+            const email     = document.getElementById('regEmail').value;
+            const password  = document.getElementById('regPassword').value;
+            const password2 = document.getElementById('regPassword2').value;
+            const errorEl   = document.getElementById('registerError');
+            const successEl = document.getElementById('registerSuccess');
+
+            errorEl.style.display   = 'none';
+            successEl.style.display = 'none';
+
+            if (password !== password2) {
+                errorEl.textContent   = 'De wachtwoorden komen niet overeen.';
+                errorEl.style.display = '';
+                return;
+            }
+
+            const result = auth.register(username, email, password);
+            if (result.error) {
+                errorEl.textContent   = result.error;
+                errorEl.style.display = '';
+            } else {
+                // Direct inloggen na registratie
+                auth.login(email, password);
+                successEl.textContent   = `Account aangemaakt! Welkom, ${result.user.username}! Je wordt doorgestuurd...`;
+                successEl.style.display = '';
+                document.getElementById('registerForm').style.display = 'none';
+                setTimeout(() => {
+                    const redirect = new URLSearchParams(window.location.search).get('redirect') || 'stemmen.html';
+                    window.location.href = redirect;
+                }, 1500);
+            }
+        }
+    </script>
+</body>
+</html>

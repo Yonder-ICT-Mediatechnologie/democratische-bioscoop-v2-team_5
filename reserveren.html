@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Democratische Bioscoop - Reserveren</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <nav>
+        <div class="container">
+            <a href="index.html" class="logo">
+                <img src="img/popcorn.svg" alt="Popvote logo" class="logo-img">
+                <span class="logo-name">Popvote</span>
+            </a>
+            <ul class="nav-links">
+                <li><a href="index.html">Home</a></li>
+                <li><a href="stemmen.html">Stemmen</a></li>
+                <li><a href="reserveren.html" class="active">Reserveren</a></li>
+                <li id="auth-nav"></li>
+            </ul>
+        </div>
+    </nav>
+
+    <main>
+        <div class="container">
+            <section>
+                <h2>Reserveer je kaartjes</h2>
+
+                <div id="filmDateHeader"></div>
+
+                <div style="background-color: var(--secondary-dark); border: 1px solid var(--border-color); border-radius: 8px; padding: 2rem; margin-bottom: 2rem;">
+                    <h3>Zaalplattegrond</h3>
+                    <p style="color: var(--text-light-gray); margin-bottom: 1rem;">
+                        Klik op de zitplaatsen die je wilt reserveren
+                    </p>
+
+                    <div id="seatsLegend"></div>
+
+                    <div id="seatsContainer" class="seats-container">
+                        <!-- Seating chart wordt hier ingeladen -->
+                    </div>
+                </div>
+
+                <form id="reservationForm" style="max-width: 800px; margin: 0 auto;">
+                    <h3>Persoonlijke gegevens</h3>
+
+                    <div class="form-group">
+                        <label for="customerName">Naam</label>
+                        <input type="text" id="customerName" required placeholder="Volledige naam">
+                    </div>
+
+                    <div class="form-group">
+                        <label for="customerEmail">Email</label>
+                        <input type="email" id="customerEmail" required placeholder="je@email.com">
+                    </div>
+
+                    <div id="reservationSummary"></div>
+
+                    <button type="submit" id="submitReservation" class="btn btn-success btn-large" style="width: 100%;" disabled>
+                        Bevestig reservering
+                    </button>
+                </form>
+            </section>
+        </div>
+    </main>
+
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 Democratische Bioscoop. Alle rechten voorbehouden.</p>
+        </div>
+    </footer>
+
+    <script src="js/auth.js"></script>
+    <script src="js/api.js"></script>
+    <script src="js/reserveren.js"></script>
+</body>
+</html>

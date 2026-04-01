@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 420">
+  <rect width="280" height="420" fill="#ff69b4"/>
+  <defs>
+    <linearGradient id="bg2" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#ff9ecd;stop-opacity:1"/>
+      <stop offset="100%" style="stop-color:#cc4488;stop-opacity:1"/>
+    </linearGradient>
+  </defs>
+  <rect width="280" height="420" fill="url(#bg2)"/>
+  <!-- Star shape -->
+  <polygon points="140,100 155,155 210,155 165,185 180,240 140,210 100,240 115,185 70,155 125,155" fill="#ffffff" opacity="0.3"/>
+  <polygon points="140,120 150,155 185,155 158,175 168,210 140,190 112,210 122,175 95,155 130,155" fill="#ffffff" opacity="0.5"/>
+  <!-- Title -->
+  <text x="140" y="290" font-family="Georgia, serif" font-size="28" fill="#ffffff" text-anchor="middle" font-weight="bold">BARBIE</text>
+  <text x="140" y="315" font-family="Arial, sans-serif" font-size="13" fill="#1a1a2e" text-anchor="middle">Greta Gerwig</text>
+  <text x="140" y="340" font-family="Arial, sans-serif" font-size="12" fill="#ffffff" text-anchor="middle" opacity="0.8">Komedie | 2023 | 114 min</text>
+  <rect x="105" y="355" width="70" height="28" rx="4" fill="#ffffff"/>
+  <text x="140" y="374" font-family="Arial, sans-serif" font-size="14" fill="#cc4488" text-anchor="middle" font-weight="bold">7.9</text>
+</svg>
